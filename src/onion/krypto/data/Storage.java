@@ -1,7 +1,6 @@
 package onion.krypto.data;
 
 import java.util.ArrayList;
-import java.util.ListIterator;
 
 /**
  * User: Michael Verkhovykh <mihver1@gmail.com>
@@ -11,31 +10,30 @@ import java.util.ListIterator;
  */
 public class Storage {
     private ArrayList<Integer> _data;
-    private ListIterator<Integer> iter;
+    private int cnt, cur;
 
     public Storage(ArrayList<Integer> data) {
         _data = data;
-        iter = _data.listIterator(0);
+        cur = 0;
+        cnt = _data.size();
     }
 
     public void addBlock(int a) {
-        _data.add(a);
+        _data.add(new Integer(a));
+        cnt = _data.size();
     }
 
 
     public ArrayList<Integer> getBlock() {
         ArrayList<Integer> temp = new ArrayList<Integer>();
         for (int i = 0; i < 4; ++i) {
-            // TODO: fix this bug
-            if (iter.hasNext()) {
-                temp.add(iter.next());  // BUG: Here is a bug
+            if (cur + i < cnt) {
+                temp.add(_data.get(cur + i));
             } else {
-                for (int j = i + 1; j < 4; ++j) {
-                    temp.add(0);
-                }
-                break;
+                temp.add(0);
             }
         }
+        cur += 4;
         return temp;
     }
 }
