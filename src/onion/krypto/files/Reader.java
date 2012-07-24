@@ -2,7 +2,9 @@ package onion.krypto.files;
 
 import onion.krypto.data.Storage;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +17,9 @@ import java.util.ArrayList;
 public class Reader {
     private Storage data;
 
-    public Reader(){};
+    public Reader() {
+    }
+
 
     public Reader(String file) throws IOException {
         data = new Storage(new ArrayList<Integer>());
@@ -38,7 +42,7 @@ public class Reader {
         }
     }
 
-    public Storage getStorageData(){
+    public Storage getStorageData() {
         return data;
     }
 }

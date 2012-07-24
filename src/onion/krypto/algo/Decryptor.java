@@ -8,5 +8,5 @@ package onion.krypto.algo;
  * To change this template use File | Settings | File Templates.
  */
 public class Decryptor {
-       //placeholder
+    //placeholder
 }
