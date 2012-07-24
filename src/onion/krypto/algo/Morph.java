@@ -20,8 +20,8 @@ public class Morph {
         System.out.println("Hello World!");
         Reader rd = new Reader("/home/michael/Projects/krypto/data/cryptHello");
         Storage st = rd.getStorageData();
-        try{
-            ArrayList<Integer> ali = new ArrayList<Integer>(st.getBlock());
+        try {
+            ArrayList<Integer> ali = new ArrayList<Integer>(st.getBlock());  // BUG: Here is a bug
             System.out.print(ali.toString());
         } finally {
             //

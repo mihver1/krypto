@@ -26,7 +26,7 @@ public class Storage {
         ArrayList<Integer> temp = new ArrayList<Integer>();
         for (int i = 0; i < 4; ++i) {
             if (iter.hasNext()) {
-                temp.add(iter.next());
+                temp.add(iter.next());  // BUG: Here is a bug
             } else {
                 for (int j = i + 1; j < 4; ++j) {
                     temp.add(0);
