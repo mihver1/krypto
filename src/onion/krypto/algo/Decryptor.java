@@ -9,4 +9,5 @@ package onion.krypto.algo;
  */
 public class Decryptor {
     //placeholder
+    //TODO: code decryption
 }

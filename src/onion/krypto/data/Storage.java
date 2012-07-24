@@ -22,10 +22,11 @@ public class Storage {
         _data.add(a);
     }
 
-    // test
+
     public ArrayList<Integer> getBlock() {
         ArrayList<Integer> temp = new ArrayList<Integer>();
         for (int i = 0; i < 4; ++i) {
+            // TODO: fix this bug
             if (iter.hasNext()) {
                 temp.add(iter.next());  // BUG: Here is a bug
             } else {

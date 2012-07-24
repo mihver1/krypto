@@ -14,6 +14,8 @@ import java.util.ArrayList;
  * Time: 20:55
  * To change this template use File | Settings | File Templates.
  */
+
+// TODO: that's fucking bug here :(
 public class Reader {
     private Storage data;
 
