@@ -19,13 +19,13 @@ public class Storage {
     }
 
     public void addBlock(int a) {
-        _data.add(new Integer(a));
+        _data.add(a);
         cnt = _data.size();
     }
 
 
     public ArrayList<Integer> getBlock() {
-        ArrayList<Integer> temp = new ArrayList<Integer>();
+        /*ArrayList<Integer> temp = new ArrayList<Integer>();
         for (int i = 0; i < 4; ++i) {
             if (cur + i < cnt) {
                 temp.add(_data.get(cur + i));
@@ -34,6 +34,11 @@ public class Storage {
             }
         }
         cur += 4;
-        return temp;
+        return temp;*/
+        return _data;
+    }
+
+    public int getSize() {
+        return _data.size();
     }
 }
