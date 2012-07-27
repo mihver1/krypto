@@ -1,11 +1,9 @@
 package onion.krypto.files;
 
-import onion.krypto.data.Storage;
-
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * User: Michael Verkhovykh <mihver1@gmail.com>
@@ -15,34 +13,40 @@ import java.util.ArrayList;
  */
 // TODO: that's fucking bug here :(
 public class Reader {
-    private Storage data;
+    private File file = null;
+    private FileInputStream fl = null;
+    private boolean available = false;
+    private String fileName = null;
 
     public Reader() {
     }
 
+    public Reader(String fileName) throws FileNotFoundException {
+        openFile(fileName);
+    }
 
-    public Reader(String file) throws IOException {
-        data = new Storage(new ArrayList<Integer>());
-        FileInputStream in = null;
-        try {
-            in = new FileInputStream(file);
-            int c;
-
-            while ((c = in.read()) != -1) {
-                data.addBlock(c);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (in != null) {
-                in.close();
-            }
+    public char readByte() throws IOException {
+        int b = 0;
+        if ((b = fl.read()) != -1) {
+            return (char) (b);
+        } else {
+            available = false;
+            return 0;
         }
     }
 
-    public Storage getStorageData() {
-        return data;
+    public boolean ifAvailable() {
+        return available;
+    }
+
+    public void openFile(String fileName) throws FileNotFoundException {
+        file = new File(fileName);
+        fl = new FileInputStream(file);
+        available = true;
+        this.fileName = fileName;
+    }
+
+    public String getFileName() {
+        return this.fileName;
     }
 }
