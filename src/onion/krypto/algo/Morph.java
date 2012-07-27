@@ -1,11 +1,10 @@
 package onion.krypto.algo;
 
 /**
- * Created with IntelliJ IDEA.
- * User: michael
+ * User: Michael Verkhovykh <mihver1@gmail.com>
  * Date: 24.07.12
  * Time: 20:23
- * To change this template use File | Settings | File Templates.
+ * GNU GPLv3
  */
 
 import onion.krypto.data.Storage;

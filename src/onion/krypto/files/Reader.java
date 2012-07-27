@@ -8,13 +8,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Created with IntelliJ IDEA.
- * User: michael
+ * User: Michael Verkhovykh <mihver1@gmail.com>
  * Date: 24.07.12
  * Time: 20:55
- * To change this template use File | Settings | File Templates.
+ * GNU GPLv3
  */
-
 // TODO: that's fucking bug here :(
 public class Reader {
     private Storage data;
