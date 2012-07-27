@@ -23,6 +23,7 @@ public class Decrypter {
     Decrypter(Reader readKry) throws IOException {
         rd = readKry;
         orig = new PrintWriter(new FileWriter(rd.getFileName() + ".dekry"));
+        System.out.println(rd.getFileName().substring(0, rd.getFileName().length() - 4) + ".key");
         key = new Reader(rd.getFileName().substring(0, rd.getFileName().length() - 4) + ".key");
     }
 
