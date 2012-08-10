@@ -23,16 +23,16 @@ public class Decrypter {
     Decrypter(Reader readKry) throws IOException {
         rd = readKry;
         orig = new PrintWriter(new FileWriter(rd.getFileName() + ".dekry"));
-        System.out.println(rd.getFileName().substring(0, rd.getFileName().length() - 4) + ".key");
         key = new Reader(rd.getFileName().substring(0, rd.getFileName().length() - 4) + ".key");
     }
 
     void decrypt() throws IOException, InterruptedException {
-        char gammaByte = 0, kryByte = 0, decByte = 0;
+        byte gammaByte = 0, kryByte = 0, decByte = 0;
         while (rd.ifAvailable()) {
             gammaByte = key.readByte();
             kryByte = rd.readByte();
-            decByte = (char) (((int) gammaByte - (int) kryByte + 256) % 256);
+            decByte = (byte) ((gammaByte - kryByte + 256) % 256);
+            assert (-128 <= decByte) && (decByte <= 127);
             orig.write(decByte);
             orig.flush();
         }

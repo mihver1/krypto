@@ -1,6 +1,7 @@
 package onion.krypto.algo;
 
 import java.awt.*;
+import java.util.Random;
 
 /**
  * User: Michael Verkhovykh <mihver1@gmail.com>
@@ -14,10 +15,12 @@ public class GammaGenerator {
 
     ;
 
-    public char getGammaByte() throws InterruptedException {
+    public byte getGammaByte() throws InterruptedException {
         System.out.println("Move your mouse!");
         int random = MouseInfo.getPointerInfo().getLocation().x + MouseInfo.getPointerInfo().getLocation().y;
         Thread.sleep(300);
-        return (char) (random % 256);
+        byte rand = (byte) ((random + new Random().nextInt()) % 256);
+        assert (-128 <= rand) && (rand <= 127);
+        return rand;
     }
 }

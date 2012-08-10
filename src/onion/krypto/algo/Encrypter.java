@@ -29,16 +29,21 @@ public class Encrypter {
     }
 
     void crypt() throws IOException, InterruptedException {
-        char gammaByte = 0, srcByte = 0, kryByte = 0;
-        while (rd.ifAvailable()) {
-            gammaByte = gmg.getGammaByte();
-            srcByte = rd.readByte();
-            kryByte = (char) (((int) gammaByte + (int) srcByte) % 256);
-            cry.write(kryByte);
-            key.write(gammaByte);
+        byte gammaByte = 0, srcByte = 0, kryByte = 0;
+        do {
+            gammaByte = (byte) gmg.getGammaByte();
+            if (!rd.ifAvailable()) {
+                cry.close();
+                key.close();
+                return;
+            }
+            srcByte = (byte) rd.readByte();
+            kryByte = (byte) ((byte) (((int) gammaByte + (int) srcByte) % 256) - (byte) 128);
+            //cry.write((int)kryByte);
+            //key.write((int)gammaByte);
             cry.flush();
             key.flush();
-        }
+        } while (rd.ifAvailable());
     }
 
 }

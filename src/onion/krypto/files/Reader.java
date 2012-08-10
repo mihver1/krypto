@@ -25,10 +25,12 @@ public class Reader {
         openFile(fileName);
     }
 
-    public char readByte() throws IOException {
-        int b = 0;
-        if ((b = fl.read()) != -1) {
-            return (char) (b);
+    public byte readByte() throws IOException {
+        byte b = 0;
+        if ((b = (byte) fl.read()) != -1) {
+            System.out.println(b);
+            assert (-128 <= b) && (b <= 127);
+            return (byte) (b);
         } else {
             available = false;
             return 0;
