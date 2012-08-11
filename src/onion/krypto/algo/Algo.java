@@ -1,4 +1,4 @@
-package onion.krypto.algo;
+package onion.krypto.Algo;
 
 /**
  * User: Michael Verkhovykh <mihver1@gmail.com>
@@ -7,20 +7,21 @@ package onion.krypto.algo;
  * GNU GPLv3
  */
 
-import onion.krypto.files.Reader;
-
+import java.io.FileReader;
 import java.io.IOException;
 
-public class Morph {
+public class Algo {
+    public static int mod=Character.MAX_VALUE;
     public static void main(String args[]) throws IOException, InterruptedException {
         System.out.println("Hello World!");
-        Reader rd = new Reader("/home/michael/IdeaProjects/krypto/data/cryptEnum");
+        String filename="data/t.txt";
+        FileReader rd = new FileReader(filename);
         GammaGenerator gm = new GammaGenerator();
-        Encrypter enc = new Encrypter(rd, gm);
+        Encrypter enc = new Encrypter(rd, gm, filename);
         enc.crypt();
         System.out.println("Done encryption");
-        rd = new Reader("/home/michael/IdeaProjects/krypto/data/cryptEnum.kry");
-        Decrypter dec = new Decrypter(rd);
+        rd = new FileReader(filename.concat(".kry"));
+        Decrypter dec = new Decrypter(rd, filename);
         dec.decrypt();
         System.out.println("Done decryption");
     }
